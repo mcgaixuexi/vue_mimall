@@ -1,13 +1,25 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
-
+<script>
+export default {
+  data () {
+    return {
+    }
+  },
+  created () {
+    console.log(process.env.NODE_ENV)
+    console.log(process.env)
+  },
+  mounted () {
+    this.axios.get('/mock/user/login.json').then((res) => {
+      this.res = res
+    })
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
