@@ -5,16 +5,28 @@
 </template>
 <script>
 export default {
+  name: 'App',
   data () {
     return {
+      res:{}
     }
   },
   created () {
     console.log(process.env.NODE_ENV)
-    console.log(process.env)
+
   },
   mounted () {
-    this.axios.get('/mock/user/login.json').then((res) => {
+    // 本地加载请求静态json文件的形式
+    // this.axios.get('/mock/user/login.json').then((res) => {
+    //   this.res = res
+    // })
+    // 通过easy-mock平台实现数据mock
+    // this.axios.get('/user/login.json').then((res) => {
+    //   this.res = res
+    // })
+    // 本地集成mockjs
+    this.axios.get('/user/login').then((res) => {
+      console.log(res);
       this.res = res
     })
   }
